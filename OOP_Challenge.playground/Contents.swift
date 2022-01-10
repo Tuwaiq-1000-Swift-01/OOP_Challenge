@@ -6,6 +6,8 @@ class BookStore{
   var authorName:String
   var price: Double
   var numOfBooks:Int
+  
+  //MARK: - Setters and Getters
   var leftBooks : Int{
     get{
       numOfBooks
@@ -30,6 +32,8 @@ class BookStore{
     self.numOfBooks = 20
   }
   
+  //MARK: - OverLaping
+
   func bookDetails(){
     print("Title: \(bookName) Author: \(authorName)\nPrice: \(price) Number Of Books: \(numOfBooks)")
   }
@@ -44,12 +48,22 @@ class BookStore{
 
 
 class Book:BookStore {
-  var category: String
   
+  
+  private var category: String
+
+  //MARK: - Override
+
+
   override init() {
     self.category = "Fiction"
     super.init()
   }
+  
+  func bookType()-> String{
+    return "\(category)"
+  }
+  
 }
 
 class TopReading{
@@ -65,13 +79,19 @@ class TopReading{
 let book = BookStore()
 book.bookDetails(discount: 10)
 print("\n\n*****************\n\n")
-//book2.leftBooks = 10
 print (book.leftBooks)
 
-let book2 = BookStore(bookName: "LORD", authorName: "Oliver Alan", price: 34.4, numOfBooks: 12)
+var book2 = BookStore(bookName: "LORD", authorName: "Oliver Alan", price: 34.4, numOfBooks: 12)
 book2.bookDetails()
 
 print("\n\n*****************\n\n")
 
 book2.leftBooks = 10
 print (book2.leftBooks)
+print("\n\n*****************\n\n")
+
+let book3 = Book()
+book3.bookType()
+print(book3.bookType())
+
+
