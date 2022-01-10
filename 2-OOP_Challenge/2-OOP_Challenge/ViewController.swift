@@ -21,9 +21,20 @@ import UIKit
  */
 class ViewController: UIViewController {
 
+    var books : [Book] = []
+    var newBook: Book!
+    
+    @IBOutlet weak var booksTV: UITableView!
+    @IBOutlet weak var numberOfBooks: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        booksTV.delegate = self
+        booksTV.dataSource = self
+        
         let bookStore = BookStore()
         let author1 = Author(name: "Abdullah")
         let author2 = Author(name: "Osama")
@@ -45,58 +56,50 @@ class ViewController: UIViewController {
         print(BookStore.numBooks)
 
         print(book1.name)
+        numberOfBooks.text = String(BookStore.numBooks)
+        let newBooks = [book1, book2, book3, book4]
+        newBooks.map{ books.append($0)}
+        booksTV.reloadData()
     }
 
+    @IBAction func unWindToProfile (sender: UIStoryboardSegue){
+//        books.append(newBook!)
+        print("------------------unWind----------------")
+        print(newBook)
+        booksTV.reloadData()
+    }
 
+    
+}
+extension ViewController: UITableViewDelegate{
+    
+}
+extension ViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        books.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = booksTV.dequeueReusableCell(withIdentifier: "cellID", for: indexPath) as! BookCell
+        cell.titleLbl.text = books[indexPath.row].title
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
 }
 
+class BookCell : UITableViewCell{
+    @IBOutlet weak var titleLbl: UILabel!
+}
 // book store      -- book --      author
 // @booksNumber     title           name
 // name             price
 // #setBookPrice
 // #bookInfo        #bookInfo
 
-class BookStore {
 
-    static var numBooks: Int = 0 // computed var
-    let name = "Tuwiq Library"
-    
-    func bookType(){
-        print("Paper Book")
-    }
-}
-class Book : BookStore{
-    var title: String
-    var author: Author // Compositions
-    private var price: Double //Access Control, Encapsulation
-    
-    init(title: String, author: Author, price: Double){
-        self.title = title
-        self.author = author
-        self.price = price
-        BookStore.numBooks += 1
-    }
-    func printBookInfo(){ //getter
-        
-        print("Title: \(self.title), Autohr Name: \(self.author.name), Price: SAR\(self.price)")
-    }
-    
-    override func bookType() { // Overriding
-        print("PDF Book")
-    }
-    
-    func setPrice(price: Double){ // Setter
-        self.price = price
-    }
-    func setPrice(){ // Polymorphism, Overloading
-        self.price = 50
-    }
-}
-class Author{
-    var name: String
-    init(name: String){
-        self.name = name
-    }
-}
+
 
 
