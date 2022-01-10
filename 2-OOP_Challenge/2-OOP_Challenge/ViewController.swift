@@ -13,11 +13,11 @@ import UIKit
  Create object✅
  Implement Inheritance concept✅
  Implement Compositions concept✅
- Use Overriding✅ and Overloading
+ Use Overriding✅ and Overloading✅
  Implement Access Control✅
  Add setters & getters✅
- Implement Encapsulation concept
- Implement Polymorphism concept
+ Implement Encapsulation concept✅
+ Implement Polymorphism concept✅
  */
 class ViewController: UIViewController {
 
@@ -60,12 +60,6 @@ class BookStore {
 
     static var numBooks: Int = 0 // computed var
     let name = "Tuwiq Library"
-
-//    func newBook(title: String, author: String, price: Double){
-//        Book(title: title, author: author, price: price)
-//        BookStore.numBooks += 1
-//    }
-    
     
     func bookType(){
         print("Paper Book")
@@ -73,8 +67,8 @@ class BookStore {
 }
 class Book : BookStore{
     var title: String
-    var author: Author
-    private var price: Double
+    var author: Author // Compositions
+    private var price: Double //Access Control, Encapsulation
     
     init(title: String, author: Author, price: Double){
         self.title = title
@@ -82,16 +76,20 @@ class Book : BookStore{
         self.price = price
         BookStore.numBooks += 1
     }
-    func printBookInfo(){
+    func printBookInfo(){ //getter
         
         print("Title: \(self.title), Autohr Name: \(self.author.name), Price: SAR\(self.price)")
     }
-    override func bookType() {
+    
+    override func bookType() { // Overriding
         print("PDF Book")
     }
     
-    func setPrice(price: Double){
+    func setPrice(price: Double){ // Setter
         self.price = price
+    }
+    func setPrice(){ // Polymorphism, Overloading
+        self.price = 50
     }
 }
 class Author{
