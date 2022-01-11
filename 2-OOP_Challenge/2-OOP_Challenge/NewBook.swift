@@ -9,6 +9,7 @@ import UIKit
 
 class NewBook: UIViewController {
     var newBook: Book?
+    
     @IBOutlet weak var titleLbl: UITextField!
     @IBOutlet weak var authorLbl: UITextField!
     @IBOutlet weak var priceLbl: UITextField!
@@ -21,7 +22,7 @@ class NewBook: UIViewController {
     
     @IBAction func onClickSubmit(_ sender: UIButton) {
         let price = Double(priceLbl.text!)
-        newBook = Book(title: titleLbl.text!, author: Author(name: authorLbl.text!), price: price!)
+        self.newBook = Book(title: titleLbl.text!, author: Author(name: authorLbl.text!), price: price!)
         print("--------------------------onClick--------------")
         print(newBook!.title)
     }
@@ -33,12 +34,12 @@ class NewBook: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "HomeID"{
+//        if segue.identifier == "HomeID"{
             if let vc = segue.destination as? ViewController{
                 
                 vc.newBook = self.newBook!
             }
-        }
+//        }
     }
     
 

@@ -23,9 +23,10 @@ class ViewController: UIViewController {
 
     var books : [Book] = []
     var newBook: Book!
-    
+    var bookNum = String(BookStore.numBooks)
     @IBOutlet weak var booksTV: UITableView!
     @IBOutlet weak var numberOfBooks: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -61,18 +62,32 @@ class ViewController: UIViewController {
         newBooks.map{ books.append($0)}
         booksTV.reloadData()
     }
-
+    
+    @IBAction func onClickAddNewBook (sender: UIButton){
+        performSegue(withIdentifier: "toNewBook", sender: self)
+    }
     @IBAction func unWindToProfile (sender: UIStoryboardSegue){
-//        books.append(newBook!)
         print("------------------unWind----------------")
-        print(newBook)
-        booksTV.reloadData()
+        print(newBook!)
+        if let newBook = newBook{
+            
+            books.append(newBook)
+            booksTV.reloadData()
+            numberOfBooks.text = String(BookStore.numBooks)
+        }
     }
 
     
 }
 extension ViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "BookDetailID") as! BookDetail
+        let book = books[indexPath.row]
+        vc.bookTitle = book.title
+        vc.author = book.author.name
+        vc.price = book.getPrice()
+        self.navigationController?.show(vc, sender: nil)
+    }
 }
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,9 +99,7 @@ extension ViewController: UITableViewDataSource{
         cell.titleLbl.text = books[indexPath.row].title
         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
+    
     
 }
 

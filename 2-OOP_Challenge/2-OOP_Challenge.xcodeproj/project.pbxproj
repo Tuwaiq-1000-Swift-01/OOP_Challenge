@@ -17,6 +17,7 @@
 		1BE1391F278CD35600D636CF /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE1391E278CD35600D636CF /* Book.swift */; };
 		1BE13921278CD37500D636CF /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE13920278CD37500D636CF /* Author.swift */; };
 		1BE13924278CDB9500D636CF /* NewBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE13923278CDB9500D636CF /* NewBook.swift */; };
+		1BE13926278D3F6900D636CF /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE13925278D3F6900D636CF /* BookDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1BE1391E278CD35600D636CF /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		1BE13920278CD37500D636CF /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		1BE13923278CDB9500D636CF /* NewBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBook.swift; sourceTree = "<group>"; };
+		1BE13925278D3F6900D636CF /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				1BE13908278C849100D636CF /* AppDelegate.swift */,
 				1BE1390A278C849100D636CF /* SceneDelegate.swift */,
 				1BE1390C278C849100D636CF /* ViewController.swift */,
+				1BE13925278D3F6900D636CF /* BookDetail.swift */,
 				1BE13923278CDB9500D636CF /* NewBook.swift */,
 				1BE13922278CD38600D636CF /* Model */,
 				1BE1390E278C849100D636CF /* Main.storyboard */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BE13921278CD37500D636CF /* Author.swift in Sources */,
+				1BE13926278D3F6900D636CF /* BookDetail.swift in Sources */,
 				1BE13924278CDB9500D636CF /* NewBook.swift in Sources */,
 				1BE1390D278C849100D636CF /* ViewController.swift in Sources */,
 				1BE13909278C849100D636CF /* AppDelegate.swift in Sources */,

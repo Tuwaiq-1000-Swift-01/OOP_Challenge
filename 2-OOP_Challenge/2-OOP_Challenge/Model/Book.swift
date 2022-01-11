@@ -25,7 +25,9 @@ class Book : BookStore{
     override func bookType() { // Overriding
         print("PDF Book")
     }
-    
+    func getPrice()->Double{
+        return self.price
+    }
     func setPrice(price: Double){ // Setter
         self.price = price
     }
