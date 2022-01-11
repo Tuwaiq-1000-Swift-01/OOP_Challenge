@@ -22,7 +22,7 @@ class BookStore {
         self.nameAuthor = nameAuthor
         self.price = price
         self.numBook = numBook
-        self.edition[0] = edition
+        self.edition.append(edition)
         
     }
     //MARK: (2) Add print method to prints BookStore details
@@ -44,9 +44,18 @@ class BookStore {
         print(signatureStore)
     }    
 }
+//Implement Compositions concept --- step 2
+struct Edition {
+let numEdition : Int
+let yearEdition : Int
+let cover : String
+}
+let firstEdition = Edition(numEdition: 1 , yearEdition: 2022 , cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfr_-9CKVVrxdBURrymYVvSHa3I3304n3KEQ&usqp=CAU" )
+
+
 // MARK: (4) Create object
 let myBooks = BookStore(nameBook: "Shine & Raise", nameAuthor: "A.A.R" , price: 1000.0, numBook: 100 , edition: firstEdition )
-
+myBooks.detailsBook()
 
 //MARK: (5) Implement Inheritance concept
 //Implement Polymorphism concept
@@ -77,12 +86,6 @@ class bookCooking : BookStore {
    
 }
 
-//Implement Compositions concept --- step 2
-struct Edition {
-let numEdition : Int
-let yearEdition : Int
-let cover : String
-}
-let firstEdition = Edition(numEdition: 1 , yearEdition: 2022 , cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfr_-9CKVVrxdBURrymYVvSHa3I3304n3KEQ&usqp=CAU" )
+
 //-----------------------------------------
 //-----(END)--------------------------------------------------------------------------------
